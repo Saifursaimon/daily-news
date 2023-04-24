@@ -6,6 +6,10 @@ const loadNews = (categoryId) => {
 };
 
 const displayNews = (newses) => {
+  const newsQuantity = document.getElementById("news-quantity");
+  newsQuantity.innerHTML = `
+  <p class = "fw-bold" >${newses.length} Items Found For This Category</p>
+  `;
   const newsContainer = document.getElementById("news-container");
   newsContainer.textContent = "";
   newses.forEach((news) => {
@@ -33,4 +37,4 @@ const displayNews = (newses) => {
   });
 };
 
-// loadNews();
+// loadNews()
