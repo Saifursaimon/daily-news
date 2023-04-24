@@ -12,8 +12,10 @@
     />
   </head>
   <body>
-    <header class="container mt-4 pb-3 border-bottom">
-      <nav class="container d-flex justify-content-between align-items-center">
+    <header class="container mt-4">
+      <nav
+        class="container d-flex justify-content-between align-items-center pb-3 border-bottom"
+      >
         <h5 class="text-primary">
           <span class="bg-primary rounded text-white p-2">Daily</span> News
         </h5>
@@ -33,7 +35,47 @@
           </ul>
         </div>
       </nav>
+
+      <!-- category -->
+      <nav class="nav justify-content-center">
+        <a
+          onclick="loadNews('08')"
+          class="nav-link text-secondary"
+          aria-current="page"
+          href="#"
+          >Home</a
+        >
+        <a onclick="loadNews('01')" class="nav-link text-secondary" href="#"
+          >Breaking News</a
+        >
+        <a onclick="loadNews('02')" class="nav-link text-secondary" href="#"
+          >Regular News</a
+        >
+        <a onclick="loadNews('03')" class="nav-link text-secondary" href="#"
+          >International News</a
+        >
+        <a onclick="loadNews('04')" class="nav-link text-secondary" href="#"
+          >Sports</a
+        >
+        <a onclick="loadNews('05')" class="nav-link text-secondary" href="#"
+          >Entertainment</a
+        >
+        <a onclick="loadNews('06')" class="nav-link text-secondary" href="#"
+          >Culture</a
+        >
+        <a onclick="loadNews('07')" class="nav-link text-secondary" href="#"
+          >Arts</a
+        >
+        <a onclick="loadNews('08')" class="nav-link text-secondary" href="#"
+          >All News</a
+        >
+      </nav>
     </header>
+    <main>
+      <section class="container mt-5">
+        <div id="news-container"></div>
+      </section>
+    </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
