@@ -15,12 +15,12 @@ const displayNews = (newses) => {
   newses.forEach((news) => {
     console.log(news);
     const newsDiv = document.createElement("div");
-    newsDiv.classList.add("card", "mb-3");
+    newsDiv.classList.add("card", "mb-3", "p-3");
     newsDiv.innerHTML = `
             <div class="row g-0">
               <div class="col-md-4">
                 <img src="${
-                  news.image_url
+                  news.thumbnail_url
                 }" class="img-fluid rounded-start" alt="..." />
               </div>
               <div class="col-md-8">
@@ -29,6 +29,17 @@ const displayNews = (newses) => {
                   <p class="card-text">
                     ${news.details.slice(0, 400)}...
                   </p>
+                  <div class = "d-flex align-items-center justify-content-around mt-5">
+                    <div class="d-flex align-items-center gap-3">
+                    <img src="${
+                      news.author.img
+                    }" style ="width : 40px; border-radius:50% ">
+                    <h5>${news.author.name ? news.author.name : "unknown"}</h5>
+                    </div>
+                    <p><i class="fa-solid fa-eye"></i> ${news.total_view}</p>
+                    <a><i class="fa-solid fa-arrow-right"  data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -37,4 +48,4 @@ const displayNews = (newses) => {
   });
 };
 
-// loadNews()
+loadNews("05");
