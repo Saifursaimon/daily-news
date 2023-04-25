@@ -13,7 +13,7 @@ const displayNews = (newses) => {
   const newsContainer = document.getElementById("news-container");
   newsContainer.textContent = "";
   newses.forEach((news) => {
-    console.log(news);
+    // console.log(news);
     const newsDiv = document.createElement("div");
     newsDiv.classList.add("card", "mb-3", "p-3");
     newsDiv.innerHTML = `
@@ -36,8 +36,12 @@ const displayNews = (newses) => {
                     }" style ="width : 40px; border-radius:50% ">
                     <h5>${news.author.name ? news.author.name : "unknown"}</h5>
                     </div>
-                    <p><i class="fa-solid fa-eye"></i> ${news.total_view}</p>
-                    <a><i class="fa-solid fa-arrow-right"  data-bs-toggle="modal"
+                    <span><i class="fa-solid fa-eye"></i> ${
+                      news.total_view ? news.total_view : "No view"
+                    }</span>
+                    <a><i onclick = "loadNewsDetails('${
+                      news._id
+                    }')" class="fa-solid fa-arrow-right"  data-bs-toggle="modal"
                     data-bs-target="#exampleModal"></i></a>
                   </div>
                 </div>
@@ -46,6 +50,23 @@ const displayNews = (newses) => {
     `;
     newsContainer.appendChild(newsDiv);
   });
+};
+
+const loadNewsDetails = (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayNewsDetails(data.data[0]));
+};
+
+const displayNewsDetails = (news) => {
+  console.log(news);
+  const modalTitle = document.getElementById("newsModal");
+  modalTitle.innerText = `${news.title}`;
+  const modalBody = document.getElementById("modal-details");
+  modalBody.innerHTML = `
+  <p>${news.details.slice(0, 1000)}....</p>
+  `;
 };
 
 loadNews("05");
